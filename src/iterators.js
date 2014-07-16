@@ -112,18 +112,18 @@ Iterators.filter = filter
 
 
 
-var arrayReduce = [3, 2, 5, 10];
+var arrayReduce = [0, 3, 2, 5, 10];
 var flattenWithReduce = function(storeValue, currentValue) {
-  if (storeValue === undefined) {
-    storeValue = array[0];
-  }
+
   return storeValue + currentValue;
 }
 
-var reduce = function(arrayReduce, actionReduce, initialValue) {
-  for (var i = 0; i < arrayReduce.length; i++) {
+var reduce = function(arrayReduce, actionReduce) {
+  for (var i = 0, result; i < arrayReduce.length; i++) {
+    result = flattenWithReduce(arrayReduce[i], arrayReduce[i]);
     
   }
+  return result;
 }
 
 // reduce(arrayReduce, flattenWithReduce);

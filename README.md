@@ -1,68 +1,112 @@
-# Iterators Lab
-## Functional Programming
-
-
-### Description
-
-In the iterators lab we will be continuing our exploration of iterators and building a few more useful methods. These methods will belong to an Iterators namespace, which we discussed in class. We also will try to use various testing methods to verify that our code is working. 
-
-
-### Phase-1
+<!-- ### Phase-1
 
 Research the following term and summarize your findings on it two to three sentences:
 
-* `higher-order function`
+* `higher-order function` -->
+
+A higher order function can take multiple functions as an input,
+while being able to return a function. The function allows
+manipulation on multiple elements.
+
+<!-- * `max` -->
+
+Input: An array of integers
+Output: The maximum value element in the array
+
+Example Input: [6, 11, 3, 5]
+Example Output: 11
+
+<!-- * `min` -->
+
+Input: An array of integers
+Output: The minimum value element in the array
+
+Example Input: [6, 11, 3, 5]
+Example Output: 3
+
+<!-- * `each` -->
+
+Input: There are two inputs. One is an array of elements, and
+			 the second input is a function with one argument. We call that function with each element as its input.
+
+Output: "each" only iterates over elements in an array, but does
+        not modify the elements inside.
+
+Example Input: ["cat", "dog", "snake", "panda"], 
+						   function(entry) {
+								 entry.toUpperCase();
+               }
+Example Output: "each" ensures that the input function gets
+                called on each and every element in the input
+                array.
+
+<!-- * `map` -->
+
+Input:  There are two inputs. One is an array of elements, and
+			 the second input is a function with one argument. We call that function with each element as its input.
+
+Output: "map" returns a new array, in which each element is the 				return value of the function called on the original 						input array element.
+
+Example Input: [2, 4, 6, 8],
+               function(currentItem) {
+	               return currentItem * 2
+	              }
+
+Example Output: [4, 8, 12, 16]
+
+<!-- * `filter` -->
+
+Input: "filter" takes two parameters. The first one will be an
+       array of elements. The second one will be a condition function with one argument. It will return a boolean value, indicating whether to keep an element if true.
+
+Output: "filter" will output an array of elements that return
+        "true" from the condition function.
+
+Example Input: [2, 9, 8, 4, 3],
+							 function(currentItem) {
+								 if (currentItem < 6) {
+								   return true;
+							   }
+							 }
+Example Output: [2, 4, 3]
 
 
-Pretending we implemented the following methods, update this README with a description of each of the following and an example you've created:
+var filter = function()
+
+Iterators.filter = filter
 
 
-* `max`
-* `min`
-* `each`
-* `map`
-* `filter`: [note](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
-* `reduce`: [note](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
-* `reject`: [note](http://underscorejs.org/#reject)
+<!-- * `reduce` -->
 
-Use the notes provided to help guide you explanation.
+Input: "reduce" takes 2 parameters. The first parameter is the
+				array of elements. The second parameter is a function that passes (at least) two arguments; one that will store the "flattened" elements in an array (i.e. its sum or product) and the second parameter will be the array's current index value.
 
+Output: "reduce" will return the "flattened" integer produced
+				from the array.
 
+Example Input: var array = [5, 3, 2, 10],
+							 function(storeValue, currentValue) {
+								 if (storeValue === undefined) {
+								   storeValue = array[0];
+								 }
+								 return storeValue + currentValue;
+							 }
 
-
-### Phase-2 
-
-* Write a test in the `test` folder for `min` and implement it in the `src/iterators.js` folder. There is a test for a `max` method already if you'd like to use that as inspiration. 
-
-* Re-implement the `each` function we did in class, but write the spec for it first. Continue this exercise with `map` and `filter`.
-
-
-### Phase-3
-
-Implement the remaining iterator methods in the namespace.
+Example Output: 20
 
 
-### Phase-4
+<!-- * `reject` -->
 
-Refactor the following code using `map` to make only one call to the `map` function versus the two below.
+Input: "reject" takes two parameters. The first one will be an
+       array of elements. The second one will be a condition function with one argument. It will return a boolean value, indicating whether to keep an element if false.
 
+Output: "reject" will output an array of elements that return
+				"false" from the condition function.
 
-```
-var myNumbers = [ -1, 2, -3, 4, -5, 6];
-
-var square = function(num) {
-	return num * num;
-};
-
-var sqrRoot = function(num) {
-	return Math.sqrt(num);
-};
-
-
-var sqrNumbers = map(myNumbers, square);
-var absNumbers = map(sqrNumbers, sqrRoot);
-```
-
-
-
-
+Example Input: [2, 9, 8, 4, 3],
+							 function(currentItem) {
+								 if (currentItem < 6) {
+								   return false;
+							   }
+							 }
+Example Output: [9, 8]
